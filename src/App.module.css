@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+
+.Container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.Header .Title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.Header button {
+  padding: 6px 3px;
+  border-radius: 3px;
+}
+
+.Board {
+  width: 186px;
+  display: inline-flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.Footer {
+  margin-top: 20px;
+}
