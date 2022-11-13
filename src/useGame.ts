@@ -28,11 +28,6 @@ function useGame() {
     if (checkLine(0, 4, 8)) return board[0];
     if (checkLine(2, 4, 6)) return board[2];
 
-    if (checkComplete()) {
-      setTimeout(() => {
-        alert("游戏结束");
-      });
-    }
     return 0;
   };
   const checkComplete = () => {
@@ -50,6 +45,13 @@ function useGame() {
       setTimeout(() => {
         alert("You win!");
       });
+    } else {
+      if (checkComplete()) {
+        setTimeout(() => {
+          alert("游戏结束");
+        });
+        return;
+      }
     }
   });
   return { board, handelClick, resetGame };
