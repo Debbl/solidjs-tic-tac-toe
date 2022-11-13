@@ -4,7 +4,7 @@ import styles from "./App.module.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Tile from "./components/Tile";
-import useGame from "./useGame";
+import useGame from "./utils/useGame";
 
 const App: Component = () => {
   const { board, handelClick, resetGame } = useGame();
@@ -13,11 +13,9 @@ const App: Component = () => {
       <div class={styles.Container}>
         <Header resetGame={resetGame} />
         <div class={styles.Board}>
-          <For each={board()} fallback="loading...">
-            {(item, index) => (
-              <Tile item={item} index={index()} handelClick={handelClick} />
-            )}
-          </For>
+          {board().map((item, index) => (
+            <Tile item={item} index={index} handelClick={handelClick} />
+          ))}
         </div>
       </div>
       <Footer />
