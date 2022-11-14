@@ -6,24 +6,18 @@ interface IProps {
   handelClick: (item: string, index: number) => void;
 }
 const Tile = (props: IProps) => {
-  const { item, index, handelClick } = props;
+  const { handelClick, index } = props;
+  const item = () => props.item;
   return (
-    <button
-      class={styles.Item}
-      onClick={(e) => {
-        handelClick(item, index);
-
-        console.log(e.target, index, item);
-      }}
-    >
+    <button class={styles.Item} onClick={() => handelClick(item(), index)}>
       <Switch>
-        <Match when={item === ""}>
+        <Match when={item() === ""}>
           <span></span>
         </Match>
-        <Match when={item === "1"}>
+        <Match when={item() === "1"}>
           <span>X</span>
         </Match>
-        <Match when={item === "-1"}>
+        <Match when={item() === "-1"}>
           <span>O</span>
         </Match>
       </Switch>

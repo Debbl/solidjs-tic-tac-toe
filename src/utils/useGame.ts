@@ -7,12 +7,9 @@ function useGame() {
   const [board, setBoard] = createSignal(INIT_BOARD);
   const [player, setPlayer] = createSignal(true);
   const handelClick = (item: string, index: number) => {
-    console.log("click index and item", index, item);
-
     const newBoard = [...board()];
     if (item === "") {
       newBoard[index] = "-1";
-
       aiPlayer(newBoard, false).then((res) => {
         const nextBoard = [...board()];
         nextBoard[res] = "1";
@@ -84,7 +81,6 @@ function useGame() {
           if (board[i] === "") {
             board[i] = "1";
             let endScore = minimax(board, false);
-            console.log(endScore);
 
             board[i] = "";
             if (endScore > score) {
@@ -93,7 +89,6 @@ function useGame() {
             }
           }
         }
-        console.log(nextMove);
 
         resolve(nextMove);
       });
@@ -107,12 +102,12 @@ function useGame() {
         alert("You win!");
       });
     } else {
-      // if (checkComplete()) {
-      //   setTimeout(() => {
-      //     alert("游戏结束");
-      //   });
-      //   return;
-      // }
+      if (checkComplete(board())) {
+        setTimeout(() => {
+          alert("游戏结束");
+        });
+        return;
+      }
     }
   });
   return { board, handelClick, resetGame };

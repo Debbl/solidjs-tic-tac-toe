@@ -1,4 +1,4 @@
-import { Component, For, Match, Switch } from "solid-js";
+import { Component, Index } from "solid-js";
 
 import styles from "./App.module.css";
 import Footer from "./components/Footer";
@@ -13,9 +13,14 @@ const App: Component = () => {
       <div class={styles.Container}>
         <Header resetGame={resetGame} />
         <div class={styles.Board}>
-          {board().map((item, index) => (
+          {/* {board().map((item, index) => (
             <Tile item={item} index={index} handelClick={handelClick} />
-          ))}
+          ))} */}
+          <Index each={board()}>
+            {(item, index) => (
+              <Tile item={item()} index={index} handelClick={handelClick} />
+            )}
+          </Index>
         </div>
       </div>
       <Footer />
