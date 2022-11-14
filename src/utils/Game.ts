@@ -52,7 +52,7 @@ class Game extends EventBus<Events> {
     const { board } = this;
     return Math.abs(+board[x] + +board[y] + +board[z]) === 3;
   }
-  protected checkStatus() {
+  checkStatus() {
     for (let i = 0; i < 9; i += 3) {
       if (this.checkLine(i, i + 1, i + 2)) return this.board[i];
     }
@@ -72,7 +72,7 @@ class Game extends EventBus<Events> {
   getAIPlayerNext() {
     const { board } = this;
     let baseScore = -Infinity;
-    let next: number = 0;
+    let next: number | undefined;
     for (let i = 0; i < board.length; i++) {
       if (board[i] === "") {
         board[i] = "1";
@@ -91,6 +91,7 @@ class Game extends EventBus<Events> {
     start(() => {
       const next = this.getAIPlayerNext();
       console.log(next);
+      if (!next) return;
       this.board[next] = "1";
       this.setBoard(this.board);
     });

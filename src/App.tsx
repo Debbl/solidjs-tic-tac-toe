@@ -1,4 +1,4 @@
-import { Component, createSignal, Index } from "solid-js";
+import { Component, createEffect, createSignal, Index } from "solid-js";
 
 import styles from "./App.module.css";
 import Footer from "./components/Footer";
@@ -13,6 +13,13 @@ const App: Component = () => {
   const [board, setBoard] = createSignal(INIT_BOARD, { equals: false });
   const game = new Game(board());
   game.on("update", setBoard);
+  createEffect(() => {
+    console.log(board());
+    const res = game.checkStatus();
+    if (res != "") {
+      alert("游戏结束！");
+    }
+  });
   return (
     <div class={styles.App}>
       <div class={styles.Container}>
