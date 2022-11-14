@@ -1,22 +1,23 @@
 import styles from "../App.module.css";
 import { Match, Switch } from "solid-js";
 interface IProps {
-  item: number;
+  item: string;
   index: number;
-  handelClick: (item: number, index: number) => void;
+  handelClick: (item: string, index: number) => void;
 }
 const Tile = (props: IProps) => {
-  const { item, index, handelClick } = props;
+  const { handelClick, index } = props;
+  const item = () => props.item;
   return (
-    <button class={styles.Item} onClick={() => handelClick(item, index)}>
+    <button class={styles.Item} onClick={() => handelClick(item(), index)}>
       <Switch>
-        <Match when={item === 0}>
+        <Match when={item() === ""}>
           <span></span>
         </Match>
-        <Match when={item === 1}>
+        <Match when={item() === "1"}>
           <span>X</span>
         </Match>
-        <Match when={item === -1}>
+        <Match when={item() === "-1"}>
           <span>O</span>
         </Match>
       </Switch>
