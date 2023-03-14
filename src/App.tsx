@@ -1,39 +1,47 @@
-import { Component, createEffect, createSignal, Index } from "solid-js";
+import { Component, createEffect, Index, onCleanup } from "solid-js";
 
 import styles from "./App.module.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Tile from "./components/Tile";
-import { INIT_BOARD } from "./constants";
-import Game from "./utils/Game";
-import useGame from "./utils/useGame";
+import GamePlay from "./composable/GamePlay";
 
 const App: Component = () => {
-  // const { board, handelClick, resetGame } = useGame();
-  const [board, setBoard] = createSignal(INIT_BOARD, { equals: false });
-  const game = new Game(board());
-  game.on("update", setBoard);
+  const gamePlay = new GamePlay();
   createEffect(() => {
-    console.log(board());
-    const res = game.checkStatus();
-    if (res != "") {
-      alert("游戏结束！");
+    let id: number;
+    let msg = "";
+    const res = gamePlay.checkStatus();
+    if (res !== "") {
+      switch (res) {
+        case "0":
+          msg = "平局";
+          break;
+        case "1":
+          msg = "您输了";
+          break;
+        case "-1":
+          msg = "您赢了";
+          break;
+      }
+      id = setTimeout(() => {
+        alert(msg);
+        clearTimeout(id);
+      });
     }
+    onCleanup(() => clearTimeout(id));
   });
   return (
     <div class={styles.App}>
       <div class={styles.Container}>
-        <Header resetGame={game.resetGame} />
+        <Header resetGame={() => gamePlay.resetGame()} />
         <div class={styles.Board}>
-          {/* {board().map((item, index) => (
-            <Tile item={item} index={index} handelClick={handelClick} />
-          ))} */}
-          <Index each={board()}>
+          <Index each={gamePlay.board}>
             {(item, index) => (
               <Tile
                 item={item()}
                 index={index}
-                handelClick={game.handleClick}
+                handelClick={(item, index) => gamePlay.handleClick(item, index)}
               />
             )}
           </Index>
