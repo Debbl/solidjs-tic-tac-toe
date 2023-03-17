@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import { Index, createEffect, createSignal, onCleanup } from "solid-js";
+import { Index, createEffect, onCleanup } from "solid-js";
 
 import styles from "./App.module.css";
 import Footer from "./components/Footer";
