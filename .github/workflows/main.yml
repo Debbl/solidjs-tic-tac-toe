@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: ["main"]
+    branches: [main]
 
 jobs:
   pages:
@@ -11,7 +11,7 @@ jobs:
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2.5.1
         with:
-          node-version: "16.x"
+          node-version: 16.x
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.2
         with:

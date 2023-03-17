@@ -1,6 +1,7 @@
-import { Accessor, createSignal, Setter } from "solid-js";
-import { Board } from "../types";
+import type { Accessor, Setter } from "solid-js";
+import { createSignal } from "solid-js";
 import _ from "lodash";
+import type { Board } from "../types";
 
 const INIT_BOARD: Board = Array.from({ length: 9 }).map(() => "");
 
@@ -21,18 +22,21 @@ export default class GamePlay {
   protected setBoard(board: Board) {
     this._setBoard(board);
   }
+
   protected checkLine(x: number, y: number, z: number) {
     const { board } = this;
     return Math.abs(+board[x] + +board[y] + +board[z]) === 3;
   }
+
   protected checkComplete() {
     const { board } = this;
     return board.every((i) => i !== "");
   }
+
   protected getMinIncome(board: Board, isAI: boolean) {
     const res = this.checkStatus();
 
-    if (res != "") {
+    if (res !== "") {
       return +res;
     }
     if (isAI) {
@@ -59,6 +63,7 @@ export default class GamePlay {
       return baseScore;
     }
   }
+
   private getAIPlayerNext() {
     const { board } = this;
     let baseScore = -Infinity;
@@ -76,6 +81,7 @@ export default class GamePlay {
     }
     return next;
   }
+
   private AIPlayer() {
     const next = this.getAIPlayerNext();
     if (next === undefined) return;
@@ -96,6 +102,7 @@ export default class GamePlay {
     if (this.checkComplete()) return "0";
     return "";
   }
+
   public handleClick(item: string, index: number) {
     const { board } = this;
     if (item === "") {
@@ -104,6 +111,7 @@ export default class GamePlay {
       this.AIPlayer();
     }
   }
+
   public resetGame() {
     this.setBoard(_.cloneDeep(INIT_BOARD));
   }

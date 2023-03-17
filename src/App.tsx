@@ -1,4 +1,5 @@
-import { Component, createEffect, Index, onCleanup } from "solid-js";
+import type { Component } from "solid-js";
+import { Index, createEffect, createSignal, onCleanup } from "solid-js";
 
 import styles from "./App.module.css";
 import Footer from "./components/Footer";
@@ -8,6 +9,7 @@ import GamePlay from "./composable/GamePlay";
 
 const App: Component = () => {
   const gamePlay = new GamePlay();
+
   createEffect(() => {
     let id: number;
     let msg = "";
@@ -34,7 +36,9 @@ const App: Component = () => {
   return (
     <div class={styles.App}>
       <div class={styles.Container}>
+
         <Header resetGame={() => gamePlay.resetGame()} />
+
         <div class={styles.Board}>
           <Index each={gamePlay.board}>
             {(item, index) => (
