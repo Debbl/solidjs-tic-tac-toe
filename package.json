@@ -15,14 +15,14 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
-    "solid-js": "^1.5.1"
+    "solid-js": "^1.7.4"
   },
   "devDependencies": {
-    "@debbl/eslint-config-solid": "^0.0.33",
-    "@types/lodash": "^4.14.191",
-    "eslint": "^8.36.0",
-    "typescript": "^5.0.2",
-    "vite": "^3.0.9",
-    "vite-plugin-solid": "^2.3.0"
+    "@debbl/eslint-config-solid": "^0.0.39",
+    "@types/lodash": "^4.14.194",
+    "eslint": "^8.39.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.4",
+    "vite-plugin-solid": "^2.7.0"
   }
 }
