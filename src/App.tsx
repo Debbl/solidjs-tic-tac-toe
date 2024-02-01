@@ -36,7 +36,6 @@ const App: Component = () => {
   return (
     <div class={styles.App}>
       <div class={styles.Container}>
-
         <Header resetGame={() => gamePlay.resetGame()} />
 
         <div class={styles.Board}>

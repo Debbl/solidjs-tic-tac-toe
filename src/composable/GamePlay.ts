@@ -40,7 +40,7 @@ export default class GamePlay {
       return +res;
     }
     if (isAI) {
-      let baseScore = -Infinity;
+      let baseScore = Number.NEGATIVE_INFINITY;
       for (let i = 0; i < board.length; i++) {
         if (board[i] === "") {
           board[i] = "1";
@@ -51,7 +51,7 @@ export default class GamePlay {
       }
       return baseScore;
     } else {
-      let baseScore = Infinity;
+      let baseScore = Number.POSITIVE_INFINITY;
       for (let i = 0; i < board.length; i++) {
         if (board[i] === "") {
           board[i] = "-1";
@@ -66,7 +66,7 @@ export default class GamePlay {
 
   private getAIPlayerNext() {
     const { board } = this;
-    let baseScore = -Infinity;
+    let baseScore = Number.NEGATIVE_INFINITY;
     let next: number | undefined;
     for (let i = 0; i < board.length; i++) {
       if (board[i] === "") {

@@ -10,7 +10,10 @@ const Tile = (props: IProps) => {
   const item = () => props.item;
 
   return (
-    <button class={styles.Item} onClick={() => props.handelClick(item(), props.index)}>
+    <button
+      class={styles.Item}
+      onClick={() => props.handelClick(item(), props.index)}
+    >
       <Switch>
         <Match when={item() === ""}>
           <span />
