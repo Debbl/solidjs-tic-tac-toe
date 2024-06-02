@@ -10,6 +10,6 @@
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
-  },
+    "isolatedModules": true
+  }
 }

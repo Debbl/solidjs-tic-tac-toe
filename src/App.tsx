@@ -11,8 +11,9 @@ const App: Component = () => {
   const gamePlay = new GamePlay();
 
   createEffect(() => {
-    let id: number;
+    let id: NodeJS.Timeout;
     let msg = "";
+
     const res = gamePlay.checkStatus();
     if (res !== "") {
       switch (res) {
@@ -27,6 +28,7 @@ const App: Component = () => {
           break;
       }
       id = setTimeout(() => {
+        // eslint-disable-next-line no-alert
         alert(msg);
         clearTimeout(id);
       });
