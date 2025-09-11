@@ -24,7 +24,7 @@
     "@types/lodash": "^4.17.4",
     "eslint": "8.57.0",
     "typescript": "^5.4.5",
-    "vite": "^5.2.12",
+    "vite": "^5.4.20",
     "vite-plugin-solid": "^2.10.2"
   }
 }
